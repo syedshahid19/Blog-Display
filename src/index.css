@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background-color: hsl(0, 0%, 100%);
+}
+
+
+.bgImageWrapper {
+  background-image: url('./images/bg-pattern-dots.svg');
+  background-size: 8%;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
+  
+}
+
+.swiper-container {
+  position: relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000; 
+  width: 40px;
+  height: 40px;
+  top: 50%; 
+  transform: translateY(-50%);
+  background-color: #fff; 
+  border: 2px solid #000; 
+  border-radius: 4px; 
+  padding: 25px; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: absolute;
+}
+
+
+@media (max-width: 770px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 10px;
+    transform: none; 
+    width: 20px;
+    height: 20px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 18px; 
+  }
+
+  
+  .swiper-slide {
+    margin-top: 20px; 
+  }
+}
+
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #000; 
+  color: #fff; 
+}
+
+
+/* Background SVG animation */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Behind the content */
+}
+
+.draw-line {
+  stroke-dasharray: 1000; /* Use actual path length */
+  stroke-dashoffset: 1000; /* Use actual path length */
+  animation: draw 4s ease-in-out infinite, undraw 4s ease-in-out infinite alternate;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1000; /* Use actual path length */
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes undraw {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1000; /* Use actual path length */
+  }
+}
+
+.platform-container {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically by default */
+  @media (min-width: 1024px) {
+    flex-direction: row; /* Stacks items horizontally for large screens */
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.background-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+
+
